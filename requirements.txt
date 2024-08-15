@@ -1,7 +1,4 @@
-Flask
-torch
-torchvision
-clip-by-openai
-faiss-cpu
-transnetv2
-Pillow
+Flask==2.3.0
+torch==2.1.0
+faiss-cpu==1.7.3
+numpy==1.24.3

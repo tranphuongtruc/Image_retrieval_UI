@@ -24,7 +24,6 @@ def image_to_image():
     if request.method == 'POST':
         file = request.files.get('file')
         if file:
-            # Save the file to the 'uploads' folder
             upload_folder = 'uploads'
             if not os.path.exists(upload_folder):
                 os.makedirs(upload_folder)
@@ -32,9 +31,7 @@ def image_to_image():
             file_path = os.path.join(upload_folder, file.filename)
             file.save(file_path)
 
-            # Encode uploaded image and search in the index
-            query_vector = encode_image(
-                file_path, clip_model, preprocess).detach().numpy()
+            query_vector = encode_image(file_path, clip_model, preprocess).detach().numpy()
             indices, _ = search_index(faiss_index, query_vector, k=5)
             results = [image_paths[i] for i in indices[0]]
 
@@ -48,7 +45,6 @@ def text_to_image():
     if request.method == 'POST':
         query = request.form.get('query')
         if query:
-            # Encode query text and search in the index
             query_vector = encode_text(query, clip_model).detach().numpy()
             indices, _ = search_index(faiss_index, query_vector, k=5)
             results = [image_paths[i] for i in indices[0]]
@@ -69,7 +65,6 @@ def upload():
         return redirect(request.url)
 
     if file:
-        # Save the file to the 'uploads' folder
         upload_folder = 'uploads'
         if not os.path.exists(upload_folder):
             os.makedirs(upload_folder)
@@ -77,7 +72,6 @@ def upload():
         file_path = os.path.join(upload_folder, file.filename)
         file.save(file_path)
 
-        # Extract frames and update the index
         process_frames_and_update_index(file_path)
 
         return 'Successfully uploaded'
@@ -94,11 +88,9 @@ def process_frames_and_update_index(video_path):
     for image_file in os.listdir(output_folder):
         image_path = os.path.join(output_folder, image_file)
         image_paths.append(image_path)
-        image_vector = encode_image(
-            image_path, clip_model, preprocess).detach().numpy().flatten()
+        image_vector = encode_image(image_path, clip_model, preprocess).detach().numpy().flatten()
         image_vectors.append(image_vector)
 
-    # Build the FAISS index
     faiss_index = build_faiss_index(image_vectors)
 
 

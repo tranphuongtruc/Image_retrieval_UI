@@ -1,1 +1,47 @@
-# Image_retrieval_UI
+# Image Retrieval Project
+
+## Setup
+
+1. **Clone the Repository:**
+
+    ```bash
+    git clone https://github.com/tranphuongtruc/Image_retrieval_UI.git
+    cd Image_retrieval_UI
+    ```
+
+2. **Create a Virtual Environment:**
+
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
+
+3. **Install Requirements:**
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Run the Application:**
+
+    ```bash
+    python app.py
+    ```
+
+## Localtunnel
+
+If you need to expose your local server to the internet, use Localtunnel:
+
+1. **Install Localtunnel:**
+
+    ```bash
+    npm install -g localtunnel
+    ```
+
+2. **Run Localtunnel:**
+
+    ```bash
+    lt --port 5001
+    ```
+
+3. **Access the URL Provided by Localtunnel.**
