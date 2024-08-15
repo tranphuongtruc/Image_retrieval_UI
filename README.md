@@ -22,7 +22,20 @@
     pip install -r requirements.txt
     ```
 
-4. **Run the Application:**
+4. **Install Additional Dependencies from GitHub:**
+
+    To install `transnet` and `CLIP` from GitHub, run the following commands:
+
+    ```bash
+    # Install TransNetV2
+    pip install git+https://github.com/soCzech/TransNetV2.git
+
+    # Install CLIP
+    pip install git+https://github.com/openai/CLIP.git
+    ```
+
+
+5. **Run the Application:**
 
     ```bash
     python app.py
