@@ -1,0 +1,7 @@
+Flask
+torch
+torchvision
+clip-by-openai
+faiss-cpu
+transnetv2
+Pillow
