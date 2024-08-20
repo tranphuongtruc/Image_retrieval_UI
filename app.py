@@ -32,25 +32,29 @@ def home():
 def image_to_image():
     print("image search")
     pagefile = []
-    id_query = int(request.args.get('imgid'))
-    if id_query is None:
-        return "Error: 'imgid' parameter is missing", 400
+    id_query = request.args.get('imgid')
 
-    try:
-        id_query = int(id_query)
-    except ValueError:
-        return "Error: 'imgid' must be an integer", 400
+    if id_query:
+        try:
+            id_query = int(id_query)
+        except ValueError:
+            return "Error: 'imgid' must be an integer", 400
 
-    _, list_ids, _, list_image_paths = MyFaiss.image_search(id_query, k=50)
+        # Perform image search with the provided ID
+        _, list_ids, _, list_image_paths = MyFaiss.image_search(id_query, k=50)
 
-    imgperindex = 100
+        imgperindex = 100
 
-    for imgpath, id in zip(list_image_paths, list_ids):
-        pagefile.append({'imgpath': imgpath, 'id': int(id)})
+        for imgpath, id in zip(list_image_paths, list_ids):
+            pagefile.append({'imgpath': imgpath, 'id': int(id)})
 
-    data = {'num_page': int(LenDictPath/imgperindex)+1, 'pagefile': pagefile}
+        data = {'num_page': int(
+            LenDictPath / imgperindex) + 1, 'pagefile': pagefile}
+    else:
+        # Display default images or a message if no ID is provided
+        data = {'num_page': 0, 'pagefile': []}
 
-    return render_template('image-to-image.html', data=data)
+    return render_template('image-to-image.html', data=data, query=id_query)
 
 
 @app.route('/text-to-image', methods=['GET'])
@@ -66,7 +70,6 @@ def text_to_image():
             text_query, k=50)
 
         imgperindex = 100
-        
 
         for imgpath, id in zip(list_image_paths, list_ids):
             pagefile.append({'imgpath': imgpath, 'id': int(id)})

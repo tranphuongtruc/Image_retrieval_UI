@@ -31,24 +31,32 @@ html, body {
     background-color: #6e84ff;
 }
 
+.search-input {
+    width: 700px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 20px;
+    outline: none;
+}
 
-.upload-button {
+.search-button {
     padding: 10px 20px;
-    background-color: #7e84ca;
+    background-color: #8f98ff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
-    transition: background-color 0.3s ease; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Add shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
 }
 
-.upload-button:hover {
+.search-button:hover {
+    background-color: #7e84ca;
+}
+
+.search-button:active {
     background-color: #5b70e8;
-}
-
-.upload-button:active {
-    background-color: #4e5bf3;
 }
 
 .image-display {
@@ -61,4 +69,35 @@ html, body {
     background-color: #a7b4f7;
     padding: 10px;
     overflow-y: auto;
+}
+
+
+
+/* Container to display images, filling the rest of the screen */
+.image-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 85%; 
+    width: 100%;
+    background-color: #a7b4f7;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+
+.image-item {
+    flex: 1 1 calc(16.66% - 20px); /* 6 images per row with some spacing */
+    margin: 3px; /* Space between images */
+    box-sizing: border-box;
+}
+
+.image-item img {
+    margin: 3px;
+    width: 200px;
+    height: auto;
+    max-width: 200px;
+    border-radius: 1px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
 }
