@@ -58,3 +58,22 @@ If you need to expose your local server to the internet, use Localtunnel:
     ```
 
 3. **Access the URL Provided by Localtunnel.**
+
+
+
+## Setup and Run on Google Colab
+
+### 1. Clone the Repository
+
+Start by cloning the repository into your Google Colab environment:
+
+```python
+!git clone https://github.com/tranphuongtruc/Image_retrieval_UI.git
+%cd Image_retrieval_UI
+```
+
+### 2. Install TransNetV2 and CLIP from GitHub and required dependencies
+!pip install -r requirements.txt
+
+!pip install git+https://github.com/tranphuongtruc/transnetv2.git
+!pip install git+https://github.com/openai/CLIP.git

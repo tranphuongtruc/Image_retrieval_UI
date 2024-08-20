@@ -21,19 +21,21 @@
             </a>
         </div>
 
-        <form action="{{ url_for('text_to_image') }}" method="post">
-            <input type="text" name="query" placeholder="Type your query here" class="search-input">
+        <form action="{{ url_for('text_to_image') }}" method="get">
+            <input type="text" name="textquery" placeholder="Type your query here" class="search-input" value="{{ query or '' }}">
             <button type="submit" class="search-button">SEARCH</button>
         </form>
     </section>
 
-    <div class="image-display">
-        {% if results %}
-            {% for image in results %}
+    <div class="image-display" id="image-display">
+        {% if data.pagefile %}
+            {% for img in data.pagefile %}
                 <div class="image-item">
-                    <img src="{{ url_for('static', filename='processed_images/' ~ image) }}" alt="Result Image">
+                    <img src="{{ url_for('get_img', fpath=img.imgpath) }}" alt="{{ query }}">
                 </div>
             {% endfor %}
+        {% else %}
+            <p>No images found. Please enter a search query.</p>
         {% endif %}
     </div>
 </body>

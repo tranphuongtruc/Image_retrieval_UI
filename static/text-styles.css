@@ -71,3 +71,19 @@ html, body {
     padding: 10px;
     overflow-y: auto;
 }
+
+
+.image-item {
+    flex: 1 1 calc(16.66% - 20px); /* 6 images per row with some spacing */
+    margin: 3px; /* Space between images */
+    box-sizing: border-box;
+}
+
+.image-item img {
+    margin: 3px;
+    width: 200px;
+    height: auto;
+    max-width: 200px;
+    border-radius: 1px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+}
