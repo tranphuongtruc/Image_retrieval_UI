@@ -94,7 +94,7 @@ def get_img():
     if os.path.exists(fpath):
         img = cv2.imread(fpath)
     else:
-        print("load 404.jph")
+        print("load 404.jpg")
         img = cv2.imread("./static/images/404.jpg")
 
     img = cv2.resize(img, (1280, 720))
