@@ -11,6 +11,7 @@
    git clone https://github.com/undertheseanlp/underthesea.git
    
 3. **Run app**
-   Run the app.py file
+   
+   - Run the app.py file
 
 Note: If some modules are still reported missing after running requirements.txt, install them manually.
