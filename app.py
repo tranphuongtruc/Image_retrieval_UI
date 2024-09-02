@@ -83,6 +83,14 @@ def text_to_image():
     return render_template('text-to-image.html', data=data, query=text_query)
 
 
+POSITION = (30, 80)
+FONT = cv2.FONT_HERSHEY_SIMPLEX
+FONT_SCALE = 2.5
+THICKNESS = 7
+OUTLINE_COLOR = (0, 0, 0)
+FILL_COLOR = (255, 255, 255)
+
+
 @app.route('/get_img')
 def get_img():
     print("get_img")
@@ -99,9 +107,12 @@ def get_img():
 
     img = cv2.resize(img, (1280, 720))
 
-    # print(img.shape)
-    img = cv2.putText(img, image_name, (30, 80), cv2.FONT_HERSHEY_SIMPLEX,
-                      2.5, (255, 0, 0), 4, cv2.LINE_AA)
+    img = cv2.putText(img, image_name, POSITION, FONT,
+                      FONT_SCALE, OUTLINE_COLOR, THICKNESS + 8, cv2.LINE_AA)
+    img = cv2.putText(img, image_name, POSITION, FONT,
+                      FONT_SCALE, FILL_COLOR, THICKNESS, cv2.LINE_AA)
+    # img = cv2.putText(img, image_name, (30, 80), cv2.FONT_HERSHEY_SIMPLEX,
+    #                   2.5, (255, 0, 0), 4, cv2.LINE_AA)
 
     ret, jpeg = cv2.imencode('.jpg', img)
     return Response((b'--frame\r\n'
