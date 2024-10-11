@@ -28,33 +28,11 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/image-to-image')
-def image_to_image():
-    print("image search")
-    pagefile = []
-    id_query = request.args.get('imgid')
-
-    if id_query:
-        try:
-            id_query = int(id_query)
-        except ValueError:
-            return "Error: 'imgid' must be an integer", 400
-
-        # Perform image search with the provided ID
-        _, list_ids, _, list_image_paths = MyFaiss.image_search(id_query, k=50)
-
-        imgperindex = 100
-
-        for imgpath, id in zip(list_image_paths, list_ids):
-            pagefile.append({'imgpath': imgpath, 'id': int(id)})
-
-        data = {'num_page': int(
-            LenDictPath / imgperindex) + 1, 'pagefile': pagefile}
-    else:
-        # Display default images or a message if no ID is provided
-        data = {'num_page': 0, 'pagefile': []}
-
-    return render_template('image-to-image.html', data=data, query=id_query)
+@app.route('/feedback')
+def feedback():
+    print("feedback page")
+    # backend để đây nè
+    return render_template('feedback.html')
 
 
 @app.route('/text-to-image', methods=['GET'])
@@ -67,7 +45,7 @@ def text_to_image():
     # Check if the text_query is provided
     if text_query:
         _, list_ids, _, list_image_paths = MyFaiss.text_search(
-            text_query, k=50)
+            text_query, k=100)
 
         imgperindex = 100
 
