@@ -58,6 +58,14 @@ def text_to_image():
         # No query provided, return empty state or error message
         data = {'num_page': 0, 'pagefile': []}
 
+    with open(f"./answers/{text_query}.txt", "a") as file:
+        for answer in pagefile:
+            file_name = answer["imgpath"].split("/")[1]
+            file_name_without_jpq = file_name[:-4]
+            video_name = file_name_without_jpq.split("-")[1]
+            frame_id = file_name_without_jpq.split("-")[2]
+            file.write(f"{video_name}, {frame_id}\n")
+
     return render_template('text-to-image.html', data=data, query=text_query)
 
 
