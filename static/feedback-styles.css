@@ -1,14 +1,9 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #4e5bf3;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.w3-modal-content {
+    max-width: 600px; /* Or any reasonable max width */
+    margin: auto;
 }
 
+/* Feedback Section Style */
 .feedback-section {
     text-align: center;
     background-color: #f0f0ff;
@@ -19,6 +14,7 @@ body {
     width: 100%;
 }
 
+/* Feedback Question Style */
 .question {
     background-color: #4e5bf3;
     padding: 20px;
@@ -31,10 +27,11 @@ body {
     margin: 0;
 }
 
+/* Options Section Style */
 .options {
     display: flex;
     justify-content: space-around;
-    padding: 15px;
+    padding: 25px;
     background-color: #a7b4f7;
     border-radius: 0 0 10px 10px;
 }
@@ -43,49 +40,43 @@ body {
     text-align: center;
 }
 
-.w3-button {
-    background-color: #7aa6f9; 
-    color: white;
-    padding: 10px 20px;
-    border: none; 
-    border-radius: 10px;
-    cursor: pointer; 
-    transition: background-color 0.3s ease;
-    box-shadow: 7px 8px 13px 4px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
-}
-
-.w3-button .fa-home {
-    font-size: 24px;
-}
-
-.w3-button:hover {
-    background-color: #6e84ff !important;
-}
 
 
-.yes-button, .no-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-}
-
+/* Yes and No Buttons */
 .yes-button {
     background-color: #4CAF50;
+    margin-right: 20px;
 }
 
 .no-button {
     background-color: #f44336;
+    margin-right: 20px;
 }
 
 .yes-button:hover {
-    background-color: #459b49;
+    background-color: #46934a !important; 
 }
 
 .no-button:hover {
-    background-color: #d73734;
+    background-color: #c03c3a !important; 
+}
+
+
+/* Close Buttons */
+.close-button {
+    display: inline-block;
+    background-color: #6e84ff;
+    color: white;
+    border-radius: 50%;
+    padding: 10px 15px; 
+    font-size: 18px; 
+    cursor: pointer;
+    line-height: 1;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.close-button:hover {
+    background-color: #5e71df;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
