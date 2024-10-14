@@ -28,11 +28,23 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/feedback')
+user_feedback = None
+# YOU MAY USE THE user_feedback variable
+
+
+@app.route('/feedback', methods=['POST'])
 def feedback():
-    print("feedback page")
-    # backend để đây nè
-    return render_template('feedback.html')
+    global user_feedback
+    is_found = request.form.get('is_found')
+
+    if is_found == 'yes':
+        user_feedback = 'yes'
+        print("User found the desired images.")
+    elif is_found == 'no':
+        user_feedback = 'no'
+        print("User did NOT find the desired images.")
+
+    return '', 204  # This is a no-content response to allow JavaScript to control the UI
 
 
 @app.route('/text-to-image', methods=['GET'])
