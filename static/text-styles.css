@@ -1,6 +1,7 @@
 html, body {
     height: 100%;
     font-family: Arial, sans-serif;
+    margin: 0;
 }
 
 .search-section {
@@ -40,22 +41,23 @@ html, body {
     outline: none;
 }
 
-.search-button {
+.search-button, .feedback-button {
     padding: 10px 20px;
     background-color: #8f98ff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Add shadow */
-    transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+    transition: box-shadow 0.3s ease; 
+    margin-right: 30px;
 }
 
-.search-button:hover {
+.search-button:hover, .feedback-button:hover {
     background-color: #7e84ca;
 }
 
-.search-button:active {
+.search-button:active, .feedback-button:active {
     background-color: #5b70e8;
 }
 
@@ -87,3 +89,5 @@ html, body {
     border-radius: 1px; 
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
 }
+
+
