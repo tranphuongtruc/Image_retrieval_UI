@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='text-styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='feedback-styles.css') }}">
 </head>
 <body>
     <section class="search-section">
@@ -25,6 +26,9 @@
             <input type="text" name="textquery" placeholder="Type your query here" class="search-input" value="{{ query or '' }}">
             <button type="submit" class="search-button">SEARCH</button>
         </form>
+
+        <!-- Feedback Button to trigger the modal -->
+        <button class="feedback-button" onclick="document.getElementById('feedback-modal').style.display='block'">FEEDBACK</button>
     </section>
 
     <div class="image-display" id="image-display">
@@ -38,5 +42,51 @@
             <p>No images found. Please enter a search query.</p>
         {% endif %}
     </div>
+
+   <!-- Feedback Modal -->
+    <div id="feedback-modal" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom">
+            <div class="feedback-section">
+                <div class="question">
+                    <h1>Were the desired images found in the results?</h1>
+                </div>
+                <div class="options">
+                    <div class="button-container">
+                        <!-- Hidden form to submit feedback -->
+                        <form id="feedback-form" action="{{ url_for('feedback') }}" method="POST">
+                            <input type="hidden" id="is_found" name="is_found" value="">
+                        </form>
+
+                        <!-- YES button -->
+                        <button class="yes-button w3-button" 
+                                onclick="submitFeedback('yes')">YES</button>
+
+                        <!-- NO button -->
+                        <button class="no-button w3-button" 
+                                onclick="submitFeedback('no')">NO</button>
+
+                        <span onclick="document.getElementById('feedback-modal').style.display='none'" 
+                            class="close-button">&times;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Script to submit feedback -->
+<script>
+function submitFeedback(feedbackValue) {
+    // Set the value of the hidden input based on button clicked
+    document.getElementById('is_found').value = feedbackValue;
+    
+    // Submit the form
+    document.getElementById('feedback-form').submit();
+    
+    // Close the modal
+    document.getElementById('feedback-modal').style.display = 'none';
+}
+</script>
+
+
 </body>
 </html>
