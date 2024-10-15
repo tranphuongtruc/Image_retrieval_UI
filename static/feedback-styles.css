@@ -1,0 +1,82 @@
+.w3-modal-content {
+    max-width: 600px; /* Or any reasonable max width */
+    margin: auto;
+}
+
+/* Feedback Section Style */
+.feedback-section {
+    text-align: center;
+    background-color: #f0f0ff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Feedback Question Style */
+.question {
+    background-color: #4e5bf3;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+}
+
+.question h1 {
+    color: white;
+    font-size: 24px;
+    margin: 0;
+}
+
+/* Options Section Style */
+.options {
+    display: flex;
+    justify-content: space-around;
+    padding: 25px;
+    background-color: #a7b4f7;
+    border-radius: 0 0 10px 10px;
+}
+
+.option {
+    text-align: center;
+}
+
+
+
+/* Yes and No Buttons */
+.yes-button {
+    background-color: #4CAF50;
+    margin-right: 20px;
+}
+
+.no-button {
+    background-color: #f44336;
+    margin-right: 20px;
+}
+
+.yes-button:hover {
+    background-color: #46934a !important; 
+}
+
+.no-button:hover {
+    background-color: #c03c3a !important; 
+}
+
+
+/* Close Buttons */
+.close-button {
+    display: inline-block;
+    background-color: #6e84ff;
+    color: white;
+    border-radius: 50%;
+    padding: 10px 15px; 
+    font-size: 18px; 
+    cursor: pointer;
+    line-height: 1;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.close-button:hover {
+    background-color: #5e71df;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}

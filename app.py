@@ -28,33 +28,23 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/image-to-image')
-def image_to_image():
-    print("image search")
-    pagefile = []
-    id_query = request.args.get('imgid')
+user_feedback = None
+# YOU MAY USE THE user_feedback variable
 
-    if id_query:
-        try:
-            id_query = int(id_query)
-        except ValueError:
-            return "Error: 'imgid' must be an integer", 400
 
-        # Perform image search with the provided ID
-        _, list_ids, _, list_image_paths = MyFaiss.image_search(id_query, k=50)
+@app.route('/feedback', methods=['POST'])
+def feedback():
+    global user_feedback
+    is_found = request.form.get('is_found')
 
-        imgperindex = 100
+    if is_found == 'yes':
+        user_feedback = 'yes'
+        print("User found the desired images.")
+    elif is_found == 'no':
+        user_feedback = 'no'
+        print("User did NOT find the desired images.")
 
-        for imgpath, id in zip(list_image_paths, list_ids):
-            pagefile.append({'imgpath': imgpath, 'id': int(id)})
-
-        data = {'num_page': int(
-            LenDictPath / imgperindex) + 1, 'pagefile': pagefile}
-    else:
-        # Display default images or a message if no ID is provided
-        data = {'num_page': 0, 'pagefile': []}
-
-    return render_template('image-to-image.html', data=data, query=id_query)
+    return '', 204  # This is a no-content response to allow JavaScript to control the UI
 
 
 @app.route('/text-to-image', methods=['GET'])
@@ -67,7 +57,7 @@ def text_to_image():
     # Check if the text_query is provided
     if text_query:
         _, list_ids, _, list_image_paths = MyFaiss.text_search(
-            text_query, k=50)
+            text_query, k=100)
 
         imgperindex = 100
 
@@ -79,6 +69,14 @@ def text_to_image():
     else:
         # No query provided, return empty state or error message
         data = {'num_page': 0, 'pagefile': []}
+
+    with open(f"./answers/{text_query}.txt", "a") as file:
+        for answer in pagefile:
+            file_name = answer["imgpath"].split("/")[1]
+            file_name_without_jpq = file_name[:-4]
+            video_name = file_name_without_jpq.split("-")[1]
+            frame_id = file_name_without_jpq.split("-")[2]
+            file.write(f"{video_name}, {frame_id}\n")
 
     return render_template('text-to-image.html', data=data, query=text_query)
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <!-- Include W3.CSS and Font Awesome -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='feedback-styles.css') }}">
+</head>
+<body>
+    <section class="search-section">
+        <div class="w3-container">
+            <!-- Home Button with Link -->
+            <a href="{{ url_for('home') }}">
+                <button class="w3-button">
+                    <i class="fa fa-home"></i>
+                </button>
+            </a>
+        </div>
+    
+    <div class="feedback-section">
+        <div class="question">
+            <h1>Were the desired images found in the results?</h1>
+        </div>
+
+        <div class="options">
+            <div class="option">
+                <button class="yes-button">YES</button>  
+            </div>
+            <div class="option">
+                <button class="no-button">NO</button>        
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
